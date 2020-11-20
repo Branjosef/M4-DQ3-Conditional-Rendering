@@ -14,7 +14,8 @@ const MenuBar = (props) => {
   */
 
   return (
-    <div className="ui four item menu">
+    <div className="ui four item menu" onClick={props.showView}>
+      
       <a className="item active" id="profile">
         <i className="user large icon" id="profile"/>
       </a>

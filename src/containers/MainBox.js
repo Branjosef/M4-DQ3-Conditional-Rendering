@@ -4,21 +4,49 @@ import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
 
+  constructor() {
+    super()
+    this.state = {
+      show: ''
+    }
+  }
+
+  showView = (e) => {
+    // let Name = e.target.id.split('')
+    // Name[0] = Name[0].toUpperCase()
+    // Name = Name.join('')
+    // Name === 'Cocktail' ? Name = 'Cocktails' : Name
+    // Name === 'Photo' ? Name = 'Photos' : Name
+    // this.setState({
+    //   show: <Name/>
+    // })
+    let name; 
+
+    if(e.target.id === 'profile'){
+      name = <Profile/>
+    }
+    if (e.target.id === 'cocktail'){
+      name = <Cocktails/>
+    }
+    if (e.target.id === 'photo'){
+      name = <Photos/>
+    }
+    if (e.target.id === 'pokemon'){
+      name = <Pokemon/>
+    }
+
+    this.setState({
+      show: name
+    })
+  
+  }
 
   render() {
 
-    /*
-
-    Replace the code below! Depending on what menu item is selected in the menu, I should render either a Profile, Photos, Cocktails, or Pokemon component.Think of a way to track which menu item was selected. Which component should have state? Which component should have methods to control state? Where should these methods be called?
-
-    */
-
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
-
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar showView={this.showView}/>
+        {this.state.show}
       </div>
     )
   }
